@@ -1,0 +1,34 @@
+name: PlanetsUranus
+version: '${project.version}'
+main: com.planets.uranus.UranusPlugin
+api-version: '1.21.11'
+description: Planets - planet items with abilities (Uranus freezes, Earth armors up).
+authors: [Planets]
+
+commands:
+  uranus1:
+    description: Uranus Freeze - freeze nearby enemies (hold the Uranus item).
+    usage: /uranus1
+    permission: planets.uranus.use
+  earth1:
+    description: Earth Armor - netherite-level armor for a few seconds (hold the Earth item).
+    usage: /earth1
+    permission: planets.earth.use
+  planets:
+    description: Give or remove planet items (ops only).
+    usage: /planets <give|remove|list|reload>
+    permission: planets.admin
+
+permissions:
+  planets.uranus.use:
+    description: Allows using /uranus1.
+    default: true
+  planets.earth.use:
+    description: Allows using /earth1.
+    default: true
+  planets.admin:
+    description: Allows /planets give, remove, list and reload.
+    default: op
+  planets.uranus.bypass:
+    description: Players with this permission cannot be frozen or chilled by Uranus.
+    default: false

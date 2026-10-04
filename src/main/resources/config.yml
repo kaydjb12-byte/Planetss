@@ -1,0 +1,97 @@
+# PlanetsUranus configuration
+
+# How far (in blocks) the freeze reaches around the caster.
+radius: 10.0
+
+# How long targets stay frozen.
+duration-seconds: 3.0
+
+# Time before the same player can use /uranus1 (Uranus Freeze) again.
+cooldown-seconds: 25.0
+
+# Who can be frozen.
+freeze-players: true
+freeze-mobs: true
+
+# If true, the caster must hold the Uranus item (main hand or off hand).
+require-item: true
+
+# Cooldown display on the action bar (above the XP bar / hearts) while an ability recharges.
+hud:
+  enabled: true
+  # The ability names shown on the bar.
+  ability-name: "Uranus Freeze"
+  earth-ability-name: "Earth Armor"
+  # Show the Uranus icon from the resource pack. Set to false if players don't have the pack
+  # (a plain snowflake is shown instead).
+  use-icon: true
+  # Number of segments in the progress bar.
+  bar-length: 10
+  # Play a soft chime when the ability is ready again.
+  ready-sound: true
+
+# Passive: Frost Armor.
+# While you hold Uranus, anyone who hits you gets chilled - a nerfed powder-snow effect
+# (partial frost screen + mild Slowness). It never fully freezes or damages anyone.
+passive:
+  enabled: true
+  # Must be holding Uranus (main hand or off hand) for the passive to work.
+  require-held: true
+  # Chill mobs that hit you too (players are always affected).
+  affect-mobs: false
+  # Also chill players who hit you with arrows / tridents etc.
+  include-projectiles: false
+  # How long the chill lasts.
+  duration-seconds: 2.0
+  # Strength of the frost screen, 0-95 (100 would be a full freeze, so it is capped).
+  freeze-percent: 45
+  # 0 = Slowness I (about -15% speed), 1 = Slowness II, ...
+  slowness-amplifier: 0
+  # An attacker can only be chilled once per this many seconds, so it can't be chained.
+  per-attacker-cooldown-seconds: 4.0
+
+# ---------------------------------------------------------------- Earth
+# Ability: Earth Armor (/earth1). For a few seconds your armor, armor toughness and knockback
+# resistance are raised to full-netherite levels. Nothing is swapped in your inventory - it uses
+# temporary attribute boosts, so your own gear and its enchantments stay. If you already have
+# more than netherite-level in a stat, that stat is left alone (it never lowers anything).
+# Passive: Grounded - less knockback while you stand on the ground.
+earth:
+  # Time before the same player can use /earth1 again (counted from when it is used).
+  cooldown-seconds: 45.0
+  # How long the armor boost lasts.
+  duration-seconds: 10.0
+  # If true, the caster must hold the Earth item (main hand or off hand).
+  require-item: true
+  # Full netherite armor: 20 armor, 12 toughness, 0.4 knockback resistance (= 40%).
+  netherite-armor: 20.0
+  netherite-toughness: 12.0
+  netherite-knockback-resistance: 0.4
+  passive:
+    enabled: true
+    # Must be holding Earth (main hand or off hand) for the passive to work.
+    require-held: true
+    # Percent of knockback removed while on the ground (not jumping, falling, gliding or flying).
+    knockback-reduction: 50
+
+# Messages use MiniMessage formatting.
+messages:
+  chilled: "<aqua>Frost clings to you!</aqua>"
+  need-item: "<red>You must be holding Uranus!</red>"
+  need-item-earth: "<red>You must be holding Earth!</red>"
+  earth-cast: "<green>Earth Armor!</green>"
+  cooldown: "<red>Recharging... <white>{seconds}s</white></red>"
+  cast: "<aqua>Uranus freezes your enemies!</aqua>"
+  frozen: "<aqua>You have been frozen by Uranus!</aqua>"
+  planet-given: "<aqua>You received <white>{planet}</white>.</aqua>"
+  planet-given-other: "<aqua>Gave <white>{planet}</white> to {player}.</aqua>"
+  planet-removed: "<aqua>{amount}x <white>{planet}</white> removed from your inventory.</aqua>"
+  planet-removed-other: "<aqua>Removed {amount}x <white>{planet}</white> from {player}.</aqua>"
+  nothing-to-remove: "<red>{player} has no {planet} to remove.</red>"
+  unknown-planet: "<red>Unknown planet. Available: {planets}</red>"
+  list: "<aqua>Planets: <white>{planets}</white></aqua>"
+  usage: "<gray>Usage: /planets <give|remove> <{planets}> [player], /planets list, /planets reload</gray>"
+  no-permission: "<red>Only operators can use /planets.</red>"
+  reloaded: "<green>PlanetsUranus config reloaded.</green>"
+  no-player: "<red>Player not found.</red>"
+  players-only: "<red>Only players can use this command.</red>"
